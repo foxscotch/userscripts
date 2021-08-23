@@ -9,15 +9,15 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    let pageContent;
+  let pageContent;
 
-    const timer = setInterval(() => {
-        pageContent = document.getElementsByClassName('notion-page-content')[0];
-        if (pageContent && pageContent.style.paddingBottom !== "80vh") {
-            pageContent.style.paddingBottom = "80vh";
-        }
-    }, 100);
+  setInterval(() => {
+    pageContent = document.getElementsByClassName("notion-page-content")[0];
+    if (pageContent && pageContent.style.paddingBottom !== "80vh") {
+      pageContent.style.paddingBottom = "80vh";
+    }
+  }, 100);
 })();

@@ -8,4 +8,4 @@
 // @grant        none
 // ==/UserScript==
 
-$('.dotted').after($('.links').clone())
+$(".dotted").after($(".links").clone());

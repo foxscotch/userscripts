@@ -8,4 +8,4 @@
 // ==/UserScript==
 
 var el = document.querySelectorAll('td[valign="middle"]')[1];
-el.innerHTML = el.innerHTML.replace('October', 'Halloween');
+el.innerHTML = el.innerHTML.replace("October", "Halloween");

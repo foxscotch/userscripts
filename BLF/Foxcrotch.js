@@ -8,5 +8,5 @@
 // ==/UserScript==
 
 // Goes real fast!! Cus it doesn't need jQuery or anything
-b = document.getElementsByTagName('body')[0];
-b.outerHTML = b.outerHTML.replace(/([Ff])oxscotch/g, '$1oxcrotch');
+b = document.getElementsByTagName("body")[0];
+b.outerHTML = b.outerHTML.replace(/([Ff])oxscotch/g, "$1oxcrotch");

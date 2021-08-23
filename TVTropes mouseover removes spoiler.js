@@ -8,12 +8,12 @@
 // @grant        none
 // ==/UserScript==
 
-var spoilers = $('.spoiler');
+var spoilers = $(".spoiler");
 
-spoilers.attr('title', '');
+spoilers.attr("title", "");
 spoilers.mouseover(function () {
-    $(this).removeClass('spoiler');
+  $(this).removeClass("spoiler");
 });
 spoilers.mouseout(function () {
-    $(this).addClass('spoiler');
+  $(this).addClass("spoiler");
 });

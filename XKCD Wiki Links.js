@@ -7,13 +7,15 @@
 // @grant        none
 // ==/UserScript==
 
-document.getElementById("middleContainer").appendChild(document.createElement('br'))
+document
+  .getElementById("middleContainer")
+  .appendChild(document.createElement("br"));
 
-url = "http://www.explainxkcd.com/wiki/index.php" + window.location.pathname
-var a = document.createElement('a');
+url = "http://www.explainxkcd.com/wiki/index.php" + window.location.pathname;
+var a = document.createElement("a");
 var link = document.createTextNode("XKCD Explain wiki page");
 a.appendChild(link);
-a.href = url.slice(0,-1);
+a.href = url.slice(0, -1);
 document.getElementById("middleContainer").appendChild(a);
 
 /* do you like code that's been compressed beyond reason?! if you do, here it is!
