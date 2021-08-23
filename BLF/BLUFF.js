@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BLUFF
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      0.2.3
 // @description  Some things to help you make userscripts for the Blockland Forum
 // @author       Foxscotch
@@ -14,7 +14,7 @@ console.log(`${GM_info.script.name} ${GM_info.script.version} running!`);
 var namespace = {};
 
 
-// Separates the query string  
+// Separates the query string
 function getQueryParams(queryString) {
     if (queryString[0] == '?') {
         var pairs = queryString.slice(1).split(/[;&]/);
@@ -22,14 +22,14 @@ function getQueryParams(queryString) {
     else {
         var pairs = queryString.split(/[;&]/);
     }
-    
+
     var results = {};
-    
+
     for (var i = 0; i < pairs.length; i++) {
       var cur = pairs[i].split('=');
       results[cur[0]] = cur[1];
     }
-    
+
     return results;
 }
 namespace.queryParams = getQueryParams(window.location.search);
@@ -40,11 +40,11 @@ namespace.getQueryParams = getQueryParams;
 function getPageType() {
     var type = {};
     var qp = namespace.queryParams;
-    
+
     if (qp.topic) {
         var statusImages = document.querySelectorAll('.titlebg > td > img');
         type.topic = {};
-        
+
         if (statusImages[statusImages.length - 1].src.includes('locked')) {
             type.topic.locked = true;
         }
@@ -63,7 +63,7 @@ function getPageType() {
     }
     else if (qp.action == 'profile') {
         type.profile = {};
-        
+
         if (!qp.sa || qp.sa == 'summary') {
             type.profile.summary = true;
         }
@@ -125,9 +125,9 @@ namespace.curUserName = getUserName();
 function User(usernameElement, avatarElement, memberId) {
     this.usernameElement = usernameElement;
     this.username = usernameElement.textContent.trim();
-    
+
     this.avatarElement = avatarElement;
-    
+
     this.memberId = memberId;
 }
 
@@ -138,23 +138,23 @@ User.prototype.updateInfo = function (doc) {
     else {
         this.online = false;
     }
-    
+
     this.profileElement = doc.querySelector('table.bordercolor[align=center]')
-    
+
     var infoTables = this.profileElement.querySelectorAll('tr');
-    
+
     this.personalText = infoTables[2].children[0].textContent.trim();
-    
+
     this.blId = Number(infoTables[4].children[1].textContent);
-    
+
     var postStatsRegex = /(\d+) \((\d+\.\d+) per day\)/;
     var postStats = infoTables[5].children[1].textContent;
     postStats = postStats.match(postStatsRegex);
     this.postCount = Number(postStats[1]);
     this.postsPerDay = Number(postStats[2]);
-    
+
     this.gender = infoTables[17].children[1].textContent;
-    
+
     var tempAge = Number(infoTables[18].children[1].textContent);
     if (isNaN(tempAge)) {
         this.age = 'N/A';
@@ -162,25 +162,25 @@ User.prototype.updateInfo = function (doc) {
     else {
         this.age = tempAge;
     }
-    
+
     this.location = infoTables[19].children[1].textContent;
-    
+
     this.sigElement = doc.querySelector('div.signature');
 }
 
 User.prototype.getProfileInfo = function (callback) {
     var user = this;
-    
+
     var request = new XMLHttpRequest();
     request.responseType = 'document';
-    
+
     request.onload = function () {
         user.updateInfo(this.response);
         if (callback) {
             callback(user);
         }
     };
-    
+
     request.open('get', 'http://forum.blockland.us/index.php?action=profile;u=' + user.memberId);
     request.send();
 }
@@ -191,22 +191,22 @@ namespace.User = User;
 function handlePage() {
     // For convenience
     var pt = namespace.pageType;
-    
+
     if (pt.profile) {
         if (pt.profile.summary) {
             var name = document.querySelectorAll('tr.titlebg > td')[0];
             var av = document.querySelector('.avatar');
             var params = getQueryParams(document.querySelectorAll('td.windowbg2[colspan="2"] > a')[0].href.split('?')[1]);
             var id = Number(params.u);
-            
+
             namespace.currentUser = new User(name, av, id);
             namespace.currentUser.updateInfo(document);
         }
         else if (pt.profile.stats) {
-            
+
         }
     }
-    
+
     else if (pt.topic) {
         var postList = [];
         var posts = document.querySelectorAll('.post');

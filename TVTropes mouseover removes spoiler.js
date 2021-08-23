@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         TVTropes: Mouseover removes spoiler
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      0.1
 // @description  Mousing over a spoiler removes the spoilerness, then returns it back to its original state after your mouse leaves it.
 // @author       Foxscotch

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Randomcolour quick copy
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      1
 // @description  Add a small button to copy the color from randomcolour.com to your clipboard.
 // @author       Foxscotch
@@ -57,11 +57,11 @@ function updateButton () {
 btn.addEventListener('click', function (e) {
     hiddenText.hidden = false;
     hiddenText.select();
-    
+
     var copied = document.execCommand('copy');
     var msg = copied ? 'copied' : 'not copied'
     console.log('Hex code was ' + msg + '.');
-    
+
     hiddenText.hidden = true;
 });
 

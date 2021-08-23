@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Show/Hide N/SFW
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      1.0
 // @description  Show or hide NSFW or SFW results on WXT index
 // @author       Foxscotch

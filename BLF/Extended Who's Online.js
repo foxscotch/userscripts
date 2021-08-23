@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Extended Who's Online
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      1.1
 // @description  Script that places all pages of the BLF Who's Online list onto one page.
 // @author       Foxscotch
@@ -90,9 +90,9 @@ if (automatic) {
 else {
     var button = document.createElement('button');
     button.innerHTML = 'Add users';
-    
+
     place = document.body.children[2].children[0]
     button = place.insertBefore(button, place.children[0])
-    
+
     button.addEventListener('click', function(){emptyTable();addUsers();});
 }

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Image Hider
-// @namespace    http://foxscotch.us/
+// @namespace    http://foxscotch.net/
 // @version      1
 // @description  Hides images on the forum
 // @author       You
@@ -39,14 +39,14 @@ function hideImage(img, btn) {
 function addButtons() {
     for (var i = 0; i < images.length; i++) {
         images[i].hidden = true;
-        
+
         var btn = document.createElement('input');
         btn.type = 'button';
         btn.value = 'Show';
         btn.style.display = 'block';
-        
+
         btn.addEventListener('click', hideImage.bind(null, images[i], btn));
-        
+
         images[i].parentElement.insertBefore(btn, images[i]);
     }
 }
